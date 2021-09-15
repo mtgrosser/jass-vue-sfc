@@ -7,10 +7,12 @@ class Jass::Vue::SFC::Compiler < Jass::Core
   dependency compiler: '@vue/compiler-sfc'
 
   class << self
-    delegate :compile, to: :instance
-    
     def instance
       @instance ||= new
+    end
+    
+    def compile(source, filename)
+      instance.compile(source, filename)
     end
   end
   
