@@ -3,7 +3,6 @@ require 'digest/md5'
 class Jass::Vue::SFC::Compiler < Jass::Core
   constant :COMP_IDENTIFIER, '__sfc__'
   
-  dependency fs: 'fs'
   dependency compiler: '@vue/compiler-sfc'
 
   class << self
@@ -19,13 +18,17 @@ class Jass::Vue::SFC::Compiler < Jass::Core
   def compile(source, filename)
     filename = File.basename(filename)
     id = Digest::MD5.hexdigest(filename)[0..7]
-    compile_component(source, filename, id)
+    print "compile_component(#{filename}, #{id}) ... #{Thread.current} Instance:#{object_id}"
+    rv=compile_component(source, filename, id)
+    puts "OK\n"
+    rv
   end
   
   function :compile_component, <<~'JS'
     (source, filename, id) => {
       let code = '';
-  
+      const t0 = performance.now();
+      __jass_log(`Compiling component ${filename}`);
       const { errors, descriptor } = compiler.parse(source, { filename, sourceMap: true });
   
       const [clientScript, bindings] = compile_script(descriptor, id);
@@ -36,6 +39,9 @@ class Jass::Vue::SFC::Compiler < Jass::Core
       if (clientTemplate) {
         code += clientTemplate;
       }
+      const t1 = performance.now();
+      __jass_log(`Compiled ${filename}, took ${t1 - t0} milliseconds.`);
+      
       return code;
     }
   JS
@@ -43,7 +49,7 @@ class Jass::Vue::SFC::Compiler < Jass::Core
   function :compile_script, <<~'JS'
     (descriptor, id) => {
       if (descriptor.script || descriptor.scriptSetup) {
-        try {
+        // try {
           const compiledScript = compiler.compileScript(descriptor, {
               id,
               refSugar: true,
@@ -56,9 +62,9 @@ class Jass::Vue::SFC::Compiler < Jass::Core
           }
           code += `\n` + compiler.rewriteDefault(compiledScript.content, COMP_IDENTIFIER);
           return [code, compiledScript.bindings];
-        } catch (e) {
-          console.log(e);
-        }
+        //} catch (e) {
+        //  console.log(e);
+        //}
       } else {
         return [`\nconst ${COMP_IDENTIFIER} = {}`, undefined];
       }
@@ -89,7 +95,6 @@ class Jass::Vue::SFC::Compiler < Jass::Core
         code += `export default ${COMP_IDENTIFIER}\n`;
         
         return code;
-        // return (`\n${templateResult.code.replace(/\nexport (function|const) (render|ssrRender)/, `$1 render`)}` + `\n${COMP_IDENTIFIER}.render = render`);
       }
     }
   JS
