@@ -6,10 +6,6 @@ class Jass::Vue::SFC::Compiler < Jass::Core
   dependency compiler: '@vue/compiler-sfc'
 
   class << self
-    def instance
-      @instance ||= new
-    end
-    
     def compile(source, filename)
       instance.compile(source, filename)
     end
@@ -40,7 +36,7 @@ class Jass::Vue::SFC::Compiler < Jass::Core
         code += clientTemplate;
       }
       const t1 = performance.now();
-      __jass_log(`Compiled ${filename}, took ${t1 - t0} milliseconds.`);
+      __jass_log(`Compiled ${filename} in ${(t1 - t0).toFixed(2)}ms`);
       
       return code;
     }
