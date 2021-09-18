@@ -14,16 +14,13 @@ class Jass::Vue::SFC::Compiler < Jass::Core
   def compile(source, filename)
     filename = File.basename(filename)
     id = Digest::MD5.hexdigest(filename)[0..7]
-    print "compile_component(#{filename}, #{id}) ... #{Thread.current} Instance:#{object_id}"
-    rv=compile_component(source, filename, id)
-    puts "OK\n"
-    rv
+    # puts "compile_component(#{filename}, #{id}) ... #{Thread.current.object_id} Instance:#{object_id}"
+    compile_component(source, filename, id)
   end
   
   function :compile_component, <<~'JS'
     (source, filename, id) => {
       let code = '';
-      const t0 = performance.now();
       __jass_log(`Compiling component ${filename}`);
       const { errors, descriptor } = compiler.parse(source, { filename, sourceMap: true });
   
@@ -35,8 +32,6 @@ class Jass::Vue::SFC::Compiler < Jass::Core
       if (clientTemplate) {
         code += clientTemplate;
       }
-      const t1 = performance.now();
-      __jass_log(`Compiled ${filename} in ${(t1 - t0).toFixed(2)}ms`);
       
       return code;
     }
