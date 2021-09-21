@@ -5,7 +5,7 @@ require 'jass/vue/sfc/version'
 Gem::Specification.new do |s|
   s.name          = 'jass-vue-sfc'
   s.version       = Jass::Vue::SFC::VERSION
-  s.date          = '2021-09-15'
+  s.date          = '2021-09-21'
   s.authors       = ['Matthias Grosser']
   s.email         = ['mtgrosser@gmx.net']
   s.license       = 'MIT'
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   
   s.required_ruby_version = '>= 2.3.0'
   
-  s.add_dependency 'jass-core'
+  s.add_dependency 'jass-core', '>= 1.3.1'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rake'

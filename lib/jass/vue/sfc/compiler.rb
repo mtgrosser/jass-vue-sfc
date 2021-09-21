@@ -1,9 +1,9 @@
 require 'digest/md5'
 
 class Jass::Vue::SFC::Compiler < Jass::Core
-  constant :COMP_IDENTIFIER, '__sfc__'
+  const :COMP_IDENTIFIER, '__sfc__'
   
-  dependency compiler: '@vue/compiler-sfc'
+  require compiler: '@vue/compiler-sfc'
 
   class << self
     def compile(source, filename)

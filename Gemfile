@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'jass-core', path: '../jass-core'
+gem 'jass-core'
 
 gemspec
