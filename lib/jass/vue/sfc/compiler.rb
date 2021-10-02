@@ -1,6 +1,6 @@
 require 'digest/md5'
 
-class Jass::Vue::SFC::Compiler < Jass::Core
+class Jass::Vue::SFC::Compiler < Nodo::Core
   const :COMP_IDENTIFIER, '__sfc__'
   
   require compiler: '@vue/compiler-sfc'
@@ -21,7 +21,7 @@ class Jass::Vue::SFC::Compiler < Jass::Core
   function :compile_component, <<~'JS'
     (source, filename, id) => {
       let code = '';
-      __jass_log(`Compiling component ${filename}`);
+      nodo.log(`Compiling component ${filename}`);
       const { errors, descriptor } = compiler.parse(source, { filename, sourceMap: true });
   
       const [clientScript, bindings] = compile_script(descriptor, id);

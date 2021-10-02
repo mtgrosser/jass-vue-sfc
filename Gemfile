@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'jass-core'
+gem 'nodo', path: '../nodo'
 
 gemspec

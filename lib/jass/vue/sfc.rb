@@ -1,4 +1,4 @@
-require 'jass/core'
+require 'nodo'
 
 require_relative 'sfc/version'
 require_relative 'sfc/compiler'

@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   
   s.required_ruby_version = '>= 2.3.0'
   
-  s.add_dependency 'jass-core', '>= 1.3.1'
+  s.add_dependency 'nodo', '>= 1.5.0'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rake'
