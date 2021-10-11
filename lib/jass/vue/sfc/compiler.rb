@@ -5,18 +5,13 @@ class Jass::Vue::SFC::Compiler < Nodo::Core
   
   require compiler: '@vue/compiler-sfc'
 
-  class << self
-    def compile(source, filename)
-      instance.compile(source, filename)
-    end
-  end
-  
   def compile(source, filename)
     filename = File.basename(filename)
     id = Digest::MD5.hexdigest(filename)[0..7]
     # puts "compile_component(#{filename}, #{id}) ... #{Thread.current.object_id} Instance:#{object_id}"
     compile_component(source, filename, id)
   end
+  class_function :compile
   
   function :compile_component, <<~'JS'
     (source, filename, id) => {
