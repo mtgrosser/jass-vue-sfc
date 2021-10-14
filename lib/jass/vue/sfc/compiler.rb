@@ -68,7 +68,7 @@ class Jass::Vue::SFC::Compiler < Nodo::Core
           slotted: descriptor.slotted,
           ssr: false,
           ssrCssVars: descriptor.cssVars,
-          isProd: false,
+          isProd: 'production' == process.env.NODE_ENV,
           compilerOptions: { bindingMetadata }
         });
         if (templateResult.errors.length) {
