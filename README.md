@@ -37,14 +37,6 @@ $ yarn add @vue/compiler-sfc
 
 `Jass::Vue::SFC` depends on [Nodo](https://github.com/mtgrosser/nodo), which requires a working Node.js installation.
 
-For Rails applications, the default `NODE_PATH` will be set to `vendor/node_modules` by the Nodo Railtie.
-If you prefer to stick with the Rails 6 default, use an initializer:
-
-```ruby
-# config/initializers/nodo.rb
-Nodo.modules_root = Rails.root.join('node_modules')
-```
-
 ## Usage
 
 Place your `.vue` components inside your regular asset path, e.g. under `app/assets/javascripts` or `app/javascript`.
