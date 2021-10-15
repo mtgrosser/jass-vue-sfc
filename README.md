@@ -99,3 +99,11 @@ Currently, the following things are not (yet) supported:
 
 - extracting the `<style>` section of the SFC
 - source maps
+
+## Other Jass gems for the asset pipeline
+
+💎 [Jass::Rollup](https://github.com/mtgrosser/jass-rollup) – Rollup.js support for Sprockets
+
+💎 [Jass::Esbuild](https://github.com/mtgrosser/jass-esbuild) – esbuild support for Sprockets
+
+💎 [Jass::React::JSX](https://github.com/mtgrosser/jass-react-jsx) – React JSX support for Sprockets
