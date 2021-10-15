@@ -77,4 +77,7 @@ import Vue from 'vue';
 
 ## Limitations
 
-Currently, extracting the style section of the SFC is not supported.
+Currently, the following things are not (yet) supported:
+
+- extracting the `<style>` section of the SFC
+- source maps
