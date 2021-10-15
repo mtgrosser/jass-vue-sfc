@@ -3,21 +3,46 @@
 
 # Jass::Vue::SFC – Vue SFC support for the Rails asset pipeline
 
-`Jass::Vue::SFC` provides Vue Single File Component support for Sprockets and the Rails asset pipeline. 
-Vue SFCs will be compiled to ES modules, which can be `import`ed using the new `importmap-rails` gem or regular `<script module>` tags.
+`Jass::Vue::SFC` provides [Vue Single File Component](https://v3.vuejs.org/guide/single-file-component.html) support for Sprockets and the Rails asset pipeline.
+
+Vue SFCs will be compiled to ES modules, which can be imported using the new Rails [Import Maps](https://github.com/rails/importmap-rails) or regular `<script module>` tags.
+
+## Why?
+
+Modern browsers support native loading of ES modules using the `import` statement.
+By leveraging the new Rails Import Maps, modular JS applications can be built
+without having to integrate a complex and tedious JS build pipeline. 
+
+However, framework-specific component formats like the Vue SFC format could not be used this
+way till now.
+
+`Jass::Vue::SFC` enables the asset pipeline to compile `.vue` files to ES modules,
+allowing to build modular Vue applications in a clear and straightforward way,
+without the necessity of external build tools.
 
 ## Installation
 
-In your Gemfile:
-
+### Gemfile
 ```ruby
 gem 'jass-vue-sfc'
 ```
 
+### JS dependencies
 Add `@vue/compiler-sfc` to your JS dependencies:
-
 ```sh
 $ yarn add @vue/compiler-sfc
+```
+
+### Node.js
+
+`Jass::Vue::SFC` depends on [Nodo](https://github.com/mtgrosser/nodo), which requires a working Node.js installation.
+
+For Rails applications, the default `NODE_PATH` will be set to `vendor/node_modules` by the Nodo Railtie.
+If you prefer to stick with the Rails 6 default, use an initializer:
+
+```ruby
+# config/initializers/nodo.rb
+Nodo.modules_root = Rails.root.join('node_modules')
 ```
 
 ## Usage
@@ -64,6 +89,7 @@ If you want to use module `import`s within your components, pin them in your Rai
 ```
 # config/importmap.rb
 pin 'vue'
+pin 'HelloWorld.vue', to: 'HelloWorld.js'
 ```
 
 Then just use them in your component:
