@@ -39,7 +39,7 @@ $ yarn add @vue/compiler-sfc
 
 ## Usage
 
-Place your `.vue` components inside your regular asset path, e.g. under `app/assets/javascripts` or `app/javascript`.
+Place your `.vue` components inside your regular `app/javascript` path.
 
 In `app/javascript/components/HelloWorld.vue`:
 
@@ -71,7 +71,7 @@ converting it into an ES module.
 In your HTML code, load the component as a module:
 
 ```erb
-<%= javascript_include_tag 'HelloWorld.js', module: true %>
+<%= javascript_include_tag 'components/HelloWorld.js', module: true %>
 ```
 
 ### Components with imports
@@ -81,7 +81,7 @@ If you want to use module `import`s within your components, pin them in your Rai
 ```
 # config/importmap.rb
 pin 'vue'
-pin 'HelloWorld.vue', to: 'HelloWorld.js'
+pin 'components/HelloWorld.vue', to: 'components/HelloWorld.js'
 ```
 
 Then just use them in your component:
@@ -89,6 +89,7 @@ Then just use them in your component:
 ```vue
 <script>
 import Vue from 'vue';
+import HelloWorld from 'components/HelloWorld.vue';
 ...
 </script>
 ```
