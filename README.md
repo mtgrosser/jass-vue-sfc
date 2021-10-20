@@ -18,7 +18,7 @@ way till now.
 
 `Jass::Vue::SFC` enables the asset pipeline to compile `.vue` files to ES modules,
 allowing to build modular Vue applications in a clear and straightforward way,
-without the necessity of external build tools.
+without the need for external build tools.
 
 ## Installation
 
@@ -94,9 +94,20 @@ import HelloWorld from 'components/HelloWorld.vue';
 </script>
 ```
 
-## Limitations
+## ⚠️ Limitations
 
-Currently, the following things are not (yet) supported:
+As of v0.8.1, the `rails-importmap` gem doesn't support globbing and reloading of JS modules with a file
+extension other than `.js`, therefore a modified version is provided at [mtgrosser/importmap-rails](https://github.com/mtgrosser/importmap-rails).
+
+To use the modified version of `importmap-rails`, add it to your `Gemfile`:
+
+```ruby
+gem "importmap-rails", ">= 0.3.4", github: "mtgrosser/importmap-rails", branch: "main"
+```
+
+There is a [pull request](https://github.com/rails/importmap-rails/pull/57) which will resolve this issue when accepted.
+
+Also, the following things are not (yet) supported:
 
 - extracting the `<style>` section of the SFC
 - source maps
