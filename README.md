@@ -10,19 +10,21 @@ Vue SFCs are compiled to ES modules, which can be imported using [Import Maps](h
 ## Why?
 
 Modern browsers support native loading of ES modules using the `import` statement.
-By leveraging the new Rails Import Maps, modular JS applications can be built
-without having to integrate a complicated JS build pipeline.
+By leveraging Import Maps, modular JS applications can be built without having to integrate
+a complicated JS build pipeline.
 
-However, framework-specific component formats like the Vue SFC format could not be used this
-way till now.
+Framework-specific component formats like the Vue SFC format could not be used this way till now.
+
+### Enter `jass-vue-sfc`!
 
 `jass-vue-sfc` enables the asset pipeline to compile `.vue` files to ES modules,
 allowing to build modular Vue applications in a clear and straightforward way,
 without the need for invasive external build tools like Webpack.
 
 During development, `jass-vue-sfc` will allow you to have fast reloading without the need
-for hacks like "hot module replacement". When you change a component, just that component
-will be recompiled.
+for "hot module replacement". When you change a component, just that component will be recompiled.
+
+A JS dev server is no longer required. JS assets will be delivered by the normal Rails dev server.
 
 ## Installation
 
