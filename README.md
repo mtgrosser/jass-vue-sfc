@@ -3,7 +3,7 @@
 
 # jass-vue-sfc - Compile Vue Single File Components for Rails
 
-**`Jass::Vue::SFC` provides [Vue Single File Component](https://v3.vuejs.org/guide/single-file-component.html) support for Sprockets and the Rails asset pipeline. No Webpack required!**
+**`jass-vue-sfc` provides [Vue Single File Component](https://v3.vuejs.org/guide/single-file-component.html) support for Sprockets and the Rails asset pipeline. No Webpack required!**
  
 Vue SFCs will be compiled to ES modules, which can be imported using the new Rails [Import Maps](https://github.com/rails/importmap-rails) or regular `<script module>` tags.
 
@@ -16,9 +16,13 @@ without having to integrate a complicated JS build pipeline.
 However, framework-specific component formats like the Vue SFC format could not be used this
 way till now.
 
-`Jass::Vue::SFC` enables the asset pipeline to compile `.vue` files to ES modules,
+`jass-vue-sfc` enables the asset pipeline to compile `.vue` files to ES modules,
 allowing to build modular Vue applications in a clear and straightforward way,
 without the need for invasive external build tools like Webpack.
+
+During development, `jass-vue-sfc` will allow you to have fast reloading without the need
+for hacks like "hot module replacement". When you change a component, just that component
+will be recompiled.
 
 ## Installation
 
