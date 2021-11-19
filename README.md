@@ -5,7 +5,7 @@
 
 **`jass-vue-sfc` provides [Vue Single File Component](https://v3.vuejs.org/guide/single-file-component.html) support for Sprockets and the Rails asset pipeline. No Webpack required!**
  
-Vue SFCs will be compiled to ES modules, which can be imported using the new Rails [Import Maps](https://github.com/rails/importmap-rails) or regular `<script module>` tags.
+Vue SFCs are compiled to ES modules, which can be imported using [Import Maps](https://github.com/rails/importmap-rails) or regular `<script module>` tags.
 
 ## Why?
 
