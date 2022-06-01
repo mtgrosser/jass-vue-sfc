@@ -1,7 +1,7 @@
 [![Gem Version](https://badge.fury.io/rb/jass-vue-sfc.svg)](http://badge.fury.io/rb/jass-vue-sfc)
 [![build](https://github.com/mtgrosser/jass-vue-sfc/actions/workflows/build.yml/badge.svg)](https://github.com/mtgrosser/jass-vue-sfc/actions/workflows/build.yml)
 
-# jass-vue-sfc - Compile Vue Single File Components for Rails
+# jass-vue-sfc - Vue 3 Single File Components for Rails
 
 **`jass-vue-sfc` provides [Vue Single File Component](https://v3.vuejs.org/guide/single-file-component.html) support for Sprockets and the Rails asset pipeline. No Webpack required!**
  
